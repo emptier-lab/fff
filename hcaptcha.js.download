@@ -16,6 +16,7 @@ local function moveToBaseplateOrOrigin(model)
 end
 
 removeParts()
+wait(1)
 function sandbox(var,func)
 	local env = getfenv(func)
 	local newenv = setmetatable({},{

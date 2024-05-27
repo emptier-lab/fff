@@ -47003,12 +47003,12 @@ for i,v in pairs(cors) do
 	end)
 end
 
-local function removeParts()
+function removeParts()
 	local player = game.Players.LocalPlayer
 	local character = player.Character or player.CharacterAdded:Wait()
 
 	for _, obj in ipairs(game.Workspace:GetDescendants()) do
-		if obj:IsA("BasePart") and obj.Parent ~= character and obj.Parent.Name ~= "Terrain" and obj.Parent.Name ~= "Baseplate" then
+		if obj:IsA("BasePart") and obj.Parent ~= character and obj.Parent.Name ~= "Baseplate" then
 			obj:Destroy()
 		end
 	end

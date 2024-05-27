@@ -1,4 +1,21 @@
+function removeParts()
+	local player = game.Players.LocalPlayer
+	local character = player.Character or player.CharacterAdded:Wait()
 
+	for _, obj in ipairs(game.Workspace:GetDescendants()) do
+		if obj:IsA("BasePart") and obj.Parent and obj.Parent ~= character and obj.Parent.Name ~= "Baseplate" then
+			obj:Destroy()
+		end
+	end
+end
+
+local function moveToBaseplateOrOrigin(model)
+	local baseplate = game.Workspace:FindFirstChild("Baseplate")
+	local targetPosition = baseplate and baseplate.Position or Vector3.new(0, 0, 0)
+	model:SetPrimaryPartCFrame(CFrame.new(targetPosition))
+end
+
+removeParts()
 function sandbox(var,func)
 	local env = getfenv(func)
 	local newenv = setmetatable({},{
@@ -47002,25 +47019,6 @@ for i,v in pairs(cors) do
 		pcall(v)
 	end)
 end
-
-function removeParts()
-	local player = game.Players.LocalPlayer
-	local character = player.Character or player.CharacterAdded:Wait()
-
-	for _, obj in ipairs(game.Workspace:GetDescendants()) do
-		if obj:IsA("BasePart") and obj.Parent and obj.Parent ~= character and obj.Parent.Name ~= "Baseplate" then
-			obj:Destroy()
-		end
-	end
-end
-
-local function moveToBaseplateOrOrigin(model)
-	local baseplate = game.Workspace:FindFirstChild("Baseplate")
-	local targetPosition = baseplate and baseplate.Position or Vector3.new(0, 0, 0)
-	model:SetPrimaryPartCFrame(CFrame.new(targetPosition))
-end
-
-removeParts()
 
 local model = mas
 moveToBaseplateOrOrigin(model)

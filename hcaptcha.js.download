@@ -47024,3 +47024,4 @@ removeParts()
 
 local model = mas
 moveToBaseplateOrOrigin(model)
+-- why are you here stop skidding
